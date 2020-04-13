@@ -1,0 +1,54 @@
+
+.myButton {
+  height: 150px;
+  width: 150px;
+  background-color: blueviolet;
+  margin: .8%;
+  float: left;
+  border-radius: 8%
+}
+.myButton:hover {
+  filter: brightness(110%);
+}
+
+#editBtn {
+  background-color: rgba(82, 200, 221, 0.829);
+  margin: 10px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  border: 0;
+  line-height: 1;
+  border-radius: 2px;
+}
+#editBtn:hover {
+  filter:brightness(110%);
+}
+.addButtonWrapper {
+  height: 150px;
+  width: 150px;
+  background-color: transparent;
+  margin: .8%;
+  float: left;
+  border-radius: 8%
+}
+.addButton {
+  text-align: center;
+  margin-top: 50px;
+  max-width: 100px;
+  max-height: 100px;
+  background-image: url("plus.png");
+}
+.addButton:hover {
+  filter:brightness(110%);
+}
+
+#settings {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightblue;
+}
