@@ -5,6 +5,9 @@ window.addEventListener('load', function() {
         if (this.files && this.files[0]) {
             var img = document.querySelector('img');  // $('img')[0]
             img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+            console.log(img.src);
+            const ImageEditor = new FilerobotImageEditor();
+            ImageEditor.open(img.src);
             img.onload = imageIsLoaded;
         }
     });
@@ -12,8 +15,8 @@ window.addEventListener('load', function() {
   
   function imageIsLoaded() { 
 
-    const ImageEditor = new FilerobotImageEditor();
-
+    console.log(this.src);
+      
     ImageEditor.open(this.src);
 
 }
