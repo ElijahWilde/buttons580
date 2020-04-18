@@ -11,10 +11,10 @@ window.addEventListener('load', function() {
   });
   
   function imageIsLoaded() { 
-    alert(this.src);  // blob url
+
     const ImageEditor = new FilerobotImageEditor();
 
-    ImageEditor.open('Elijah Wilde ID Photo.jpg');
+    ImageEditor.open(this.src);
 
 }
 
