@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
+    <script src="https://cdn.scaleflex.it/plugins/filerobot-image-editor/3/filerobot-image-editor.min.js"></script>
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+
+    <!--
+    <div class="edit-me">
+        <img id="editableImage1" src="Elijah Wilde ID Photo.jpg" width="550"/>
+        <a id="edit-image" href="#" onclick="">edit image</a>
+    </div>
+    -->
+
+    <input type='file' />
+    <br><img id="myImg" src="#" alt="your image" height=200 width=100>
 
     <div>
         <button id="editBtn">Edit Mode</button>
@@ -20,10 +35,13 @@
 
     <div id="settings">
         Settings to adjust the buttons go here.
+        <div>
+            <button onclick="delCurrentButton()" id="delBtn">Delete</button>
+            <div class="color-picker"></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
-
 </body>
 
 </html>
