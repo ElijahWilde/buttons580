@@ -1,14 +1,41 @@
-
 .myButton {
   height: 150px;
   width: 150px;
   background-color: blueviolet;
   margin: .8%;
   float: left;
-  border-radius: 8%
+  border-radius: 8%;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .myButton:hover {
   filter: brightness(110%);
+}
+
+.setingsWrapper {
+  height: 150px;
+  width: 150px;
+  background-color: lightcoral;
+  margin: .2%;
+  float: left;
+  border-radius: 8%;
+}
+
+.noBackgroundImg{
+  background-image: none !important;
+}
+
+#textBox{
+  text-shadow: 2px 2px 4px #000000;
+  border-radius: 5%;
+}
+
+.textBackground{
+  background:rgba(1,1,1,0.5);
 }
 
 #editBtn {
