@@ -13,20 +13,12 @@
 <body>
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 
-    <!--
-    <div class="edit-me">
-        <img id="editableImage1" src="Elijah Wilde ID Photo.jpg" width="550"/>
-        <a id="edit-image" href="#" onclick="">edit image</a>
-    </div>
-    -->
-
-    <input type='file' />
-    <br><img id="myImg" src="#" alt="your image" height=200 width=100>
-
     <div>
         <button id="editBtn">Edit Mode</button>
     </div>
 
+    
+    
     <div id="elemsGoHere"> </div>
 
     <div class="addButtonWrapper">
@@ -34,11 +26,24 @@
     </div>
 
     <div id="settings">
-        Settings to adjust the buttons go here.
-        <div>
+        <div class = "setingsWrapper">
             <button onclick="delCurrentButton()" id="delBtn">Delete</button>
-            <div class="color-picker"></div>
         </div>
+        <div class = "setingsWrapper">
+            <div class="color-picker-background"></div>
+        </div>
+        <div class = "setingsWrapper">
+            <input type='file'/>
+            <button onclick="delBackgroundImg()">Delete Background Image</button>
+        </div>
+        <div class = "setingsWrapper">
+            <input id="textBox" type="text" onchange="changeText()"/>
+            <input type="range" min="100" max="900" value="500"  id="textWeight" onchange="changeTextWeight()">
+            <input type="range" min="50" max="250" value="150"  id="textSize" onchange="changeTextSize()">
+            <div class="color-picker-text"></div>
+            <button onclick="toggleTextBackground()">Text Background</button>
+        </div>
+        
     </div>
 
     <script src="script.js"></script>
