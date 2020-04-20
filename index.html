@@ -14,36 +14,44 @@
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 
     <div>
-        <button id="editBtn">Edit Mode</button>
+        <button class="primaryButton editBtnOff" id="editBtn" onclick="editButtonPress()">Edit Mode</button>
     </div>
 
-    
-    
     <div id="elemsGoHere"> </div>
 
-    <div class="addButtonWrapper">
+    <div id="addButtonWrapper" style="display:none"> 
         <img src="plus.png" alt="No Img" class="addButton" onclick="newElem()"></img>
     </div>
 
-    <div id="settings">
-        <div class = "setingsWrapper">
-            <button onclick="delCurrentButton()" id="delBtn">Delete</button>
+    <div id="settings" style="display:none">
+        <div class="bigSettingWrapper backgroundWrap">
+            <h2>Background</h2>
+            <div class = "smallSettingWrapper">
+                <input type="button" class="color-picker-background secondaryButton" value="Change Color" />
+                <input type="button" class="secondaryButton" id="uploadImageButton" value="Upload Image" onclick="document.getElementById('uploadImage').click()" />
+                <input type="file" style="display:none;" id="uploadImage"/> 
+                <button class="secondaryButton" onclick="delBackgroundImg()">Delete Image</button>
+            </div>
         </div>
-        <div class = "setingsWrapper">
-            <div class="color-picker-background"></div>
+        <div class="bigSettingWrapper textWrap">
+            <h2>Text</h2>
+            <div class="smallSettingWrapper">
+                <input id="textBox" type="text" value="" class="secondaryButton" onchange="changeText()"/>
+                <div>
+                    <h5>Text Weight</h5>
+                    <input type="range" min="100" max="900" value="500"  id="textWeight" onchange="changeTextWeight()">
+                </div>
+                <div>
+                    <h5>Text Height</h5>
+                    <input type="range" min="50" max="250" value="150"  id="textSize" onchange="changeTextSize()">
+                </div>
+                <input type="button" class="color-picker-text secondaryButton" value="Change Color" />
+                <button class="secondaryButton" onclick="toggleTextBackground()">Toggle Backpane</button>
+            </div>
         </div>
-        <div class = "setingsWrapper">
-            <input type='file'/>
-            <button onclick="delBackgroundImg()">Delete Background Image</button>
-        </div>
-        <div class = "setingsWrapper">
-            <input id="textBox" type="text" onchange="changeText()"/>
-            <input type="range" min="100" max="900" value="500"  id="textWeight" onchange="changeTextWeight()">
-            <input type="range" min="50" max="250" value="150"  id="textSize" onchange="changeTextSize()">
-            <div class="color-picker-text"></div>
-            <button onclick="toggleTextBackground()">Text Background</button>
-        </div>
-        
+            <div class="bigSettingWrapper deleteWrap">
+                <button onclick="delCurrentButton()" style="margin-top: 70px" class="primaryButton" id="delBtn">Delete</button>
+            </div>
     </div>
 
     <script src="script.js"></script>
