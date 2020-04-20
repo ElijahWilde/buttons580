@@ -1,7 +1,13 @@
+:root {
+  --color0: rgb(27, 171, 190);
+  --color1: rgb(94, 163, 185);
+  --color2: rgb(213, 180, 235);
+}
+
 .myButton {
   height: 150px;
   width: 150px;
-  background-color: blueviolet;
+  background-color: var(--color2);
   margin: .8%;
   float: left;
   border-radius: 8%;
@@ -13,16 +19,6 @@
   align-items: center;
 }
 .myButton:hover {
-  filter: brightness(110%);
-}
-
-.setingsWrapper {
-  height: 150px;
-  width: 150px;
-  background-color: lightcoral;
-  margin: .2%;
-  float: left;
-  border-radius: 8%;
 }
 
 .noBackgroundImg{
@@ -30,28 +26,61 @@
 }
 
 #textBox{
-  text-shadow: 2px 2px 4px #000000;
-  border-radius: 5%;
+  border: none;
+  height: 20px;
+  width: 110px;
+  margin: 5px;
 }
 
 .textBackground{
   background:rgba(1,1,1,0.5);
 }
 
-#editBtn {
-  background-color: rgba(82, 200, 221, 0.829);
+.secondaryButton{
+  height: 30px;
+  width: 110px;
+  margin-left: 5px;
+  border: none;
+}
+
+h5{
+  margin-top: -5px;
+  margin-bottom: 2px;
+  margin-left: 2px;
+}
+
+.lightUp{
+  filter:brightness(120%);
+}
+
+.primaryButton{
   margin: 10px;
-  color: white;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 20px;
-  border: 0;
+  border: none;
   line-height: 1;
   border-radius: 2px;
 }
-#editBtn:hover {
+.primaryButton:hover {
   filter:brightness(110%);
 }
+
+#delBtn{
+  background-color: red;
+  color: white;
+}
+
+.editBtnOff {
+  background-color: white ;
+  color: var(--color0);
+}
+
+.editBtnOn {
+  color: white;
+  background-color: var(--color0);
+}
+
 .addButtonWrapper {
   height: 150px;
   width: 150px;
@@ -75,7 +104,31 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 50px 0;
   text-align: center;
-  background-color: lightblue;
+  background-color: var(--color1);
+}
+
+.bigSettingWrapper {
+  height: 150px;
+  float:left;
+  background-color: var(--color1);
+}
+.bigSettingWrapper:hover {
+  filter: brightness(110%);
+}
+
+.smallSettingWrapper {
+  height: 80px;
+  display: flex;
+  margin: 5px;
+}
+
+.deleteWrap{
+
+}
+.textWrap{
+
+}
+.backgroundWrap{
+
 }
