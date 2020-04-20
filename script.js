@@ -5,17 +5,55 @@
 
 
 
-document.getElementById("settings").style.display = "none";
+//I realize I just have a ton of functions and nothing else. Is this functional programming?
+
 let numElems = 0;
 let currentButton = "";
+let editMode = false;
 
 window.addEventListener('load', function() {
-    document.querySelector('input[type="file"]').addEventListener('change', function() {
+    document.getElementById('uploadImage').addEventListener('change', function() {
         if (this.files && this.files[0]) {
             addBackgroundImg(URL.createObjectURL(this.files[0]));
         }
     });
 });
+
+function generalButtonPress(callerID){
+    currentButton = callerID;
+    if (editMode){
+        toggleSettings();
+    } else{
+        toggleLightUp();
+    }
+}
+
+function editButtonPress(){
+    toggleAddButton();
+    editMode = !editMode;
+    eb = document.getElementById('editBtn');
+    if (eb.classList.contains('editBtnOff')){
+        eb.classList.remove('editBtnOff');
+        eb.classList.add('editBtnOn');
+    } else {
+        eb.classList.add('editBtnOff');
+        eb.classList.remove('editBtnOn');
+    }
+
+    if (document.getElementById('settings').style.display === "block"){
+        toggleSettings();
+    }
+
+}
+
+function toggleLightUp(){
+    let elem = document.getElementById(currentButton);
+    if (elem.classList.contains('lightUp')){
+        elem.classList.remove('lightUp');
+    } else {
+        elem.classList.add('lightUp');
+    }
+}
 
 function delCurrentButton() {
     let elem = document.getElementById(currentButton);
@@ -54,6 +92,8 @@ function addBackgroundImg(url){
         elem.classList.remove("noBackgroundImg");
     }
     elem.style.backgroundImage = 'url("'+ url +'")';
+
+    document.getElementById('uploadImage').value = null;
 }
 
 function changeText(){
@@ -84,17 +124,25 @@ function newElem() {
     textHolder.setAttribute("id", "e"+numElems+"t");
 
     elem.appendChild(textHolder);
-    elem.addEventListener("click", function(){toggleSettings(this.id)});
+    elem.addEventListener("click", function(){generalButtonPress(this.id)});
 
+    elem.addEventListener("mouseover", function(){this.timer=window.setTimeout(function(){generalButtonPress(elem.id)},2000)});
+    elem.addEventListener("mouseout", function(){if(this.timer){window.clearTimeout(this.timer)}});
+   
     document.getElementById("elemsGoHere").append(elem);
 }
 
-function toggleSettings(callerID) {
+function toggleSettings() {  
+    let x = document.getElementById("settings");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
 
-    currentButton = callerID;
-    console.log(currentButton);
-    
-    var x = document.getElementById("settings");
+function toggleAddButton() {  
+    let x = document.getElementById("addButtonWrapper");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
@@ -106,6 +154,7 @@ function toggleSettings(callerID) {
 const pickr1 = Pickr.create({
     el: '.color-picker-background',
     theme: 'classic',
+    useAsButton: 'true',
 
     swatches: [
         'rgba(244, 67, 54, 1)',
@@ -148,6 +197,7 @@ const pickr1 = Pickr.create({
 const pickr2 = Pickr.create({
     el: '.color-picker-text',
     theme: 'classic',
+    useAsButton: 'true',
 
     swatches: [
         'rgba(244, 67, 54, 1)',
