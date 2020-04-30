@@ -1,248 +1,136 @@
-
-
-//const ImageEditor = new FilerobotImageEditor();
-//ImageEditor.open('Elijah Wilde ID Photo.jpg');
-
-
-
-//I realize I just have a ton of functions and nothing else. Is this functional programming?
-
-let numElems = 0;
-let currentButton = "";
-let editMode = false;
-
-window.addEventListener('load', function() {
-    document.getElementById('uploadImage').addEventListener('change', function() {
-        if (this.files && this.files[0]) {
-            addBackgroundImg(URL.createObjectURL(this.files[0]));
-        }
-    });
-});
-
-function generalButtonPress(callerID){
-    currentButton = callerID;
-    if (editMode){
-        toggleSettings();
-    } else{
-        toggleLightUp();
-    }
+:root {
+  --color0: rgb(27, 171, 190);
+  --color1: rgb(94, 163, 185);
+  --color2: rgb(213, 180, 235);
+  --buttSize: 150px;
 }
 
-function editButtonPress(){
-    toggleAddButton();
-    editMode = !editMode;
-    eb = document.getElementById('editBtn');
-    if (eb.classList.contains('editBtnOff')){
-        eb.classList.remove('editBtnOff');
-        eb.classList.add('editBtnOn');
-    } else {
-        eb.classList.add('editBtnOff');
-        eb.classList.remove('editBtnOn');
-    }
+.myButton {
+  height: var(--buttSize);
+  width: var(--buttSize);
+  background-color: var(--color2);
+  margin: .8%;
+  float: left;
+  border-radius: 8%;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-    if (document.getElementById('settings').style.display === "block"){
-        toggleSettings();
-    }
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.myButton:hover {
 }
 
-function toggleLightUp(){
-    let elem = document.getElementById(currentButton);
-    if (elem.classList.contains('lightUp')){
-        elem.classList.remove('lightUp');
-    } else {
-        elem.classList.add('lightUp');
-    }
+.noBackgroundImg{
+  background-image: none !important;
 }
 
-function delCurrentButton() {
-    let elem = document.getElementById(currentButton);
-    elem.parentNode.removeChild(elem);
-    toggleSettings("No Button Selected");
+#textBox{
+  border: none;
+  height: 20px;
+  width: 110px;
+  margin: 5px;
 }
 
-function delBackgroundImg(){
-    let elem = document.getElementById(currentButton);
-    elem.classList.add("noBackgroundImg");
+.textBackground{
+  background:rgba(1,1,1,0.5);
 }
 
-function changeBackgroundColor(color){
-    let elem = document.getElementById(currentButton);
-    elem.style.backgroundColor = "rgba(" + color[0].toString() + "," + color[1].toString() + "," + color[2].toString() + "," + color[3].toString() + ")";
+.secondaryButton{
+  height: 30px;
+  width: 110px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 4%;
 }
 
-function toggleTextBackground(){
-    let elem = document.getElementById(currentButton+"t");
-    console.log(elem)
-    if (elem.classList.contains('textBackground')){
-        elem.classList.remove('textBackground');
-    } else {
-        elem.classList.add('textBackground')
-    }
+h5{
+  margin-top: -5px;
+  margin-bottom: 2px;
+  margin-left: 2px;
 }
 
-function changeTextColor(color){
-    let elem = document.getElementById(currentButton+"t");
-    elem.style.color = "rgba(" + color[0].toString() + "," + color[1].toString() + "," + color[2].toString() + "," + color[3].toString() + ")";
+.lightUp{
+  filter:brightness(120%);
 }
 
-function addBackgroundImg(url){
-    let elem = document.getElementById(currentButton);
-    if (elem.classList.contains("noBackgroundImg")){
-        elem.classList.remove("noBackgroundImg");
-    }
-    elem.style.backgroundImage = 'url("'+ url +'")';
-
-    document.getElementById('uploadImage').value = null;
+.primaryButton{
+  margin: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  border: none;
+  line-height: 1;
+  border-radius: 2px;
+}
+.primaryButton:hover {
+  filter:brightness(110%);
 }
 
-function changeText(){
-    let elem = document.getElementById(currentButton+"t");
-    let text = document.getElementById('textBox').value;
-    console.log(text)
-    elem.innerHTML = text;
+#delBtn{
+  background-color: red;
+  color: white;
 }
 
-function changeTextWeight() {
-    let elem = document.getElementById(currentButton+"t");
-    elem.style.fontWeight = document.getElementById('textWeight').value;
+.editBtnOff {
+  background-color: white ;
+  color: var(--color0);
 }
 
-function changeTextSize() {
-    let elem = document.getElementById(currentButton+"t");
-    elem.style.fontSize = document.getElementById('textSize').value.toString() + "%";
+.editBtnOn {
+  color: white;
+  background-color: var(--color0);
 }
 
-function newElem() {
-    numElems++;
-    let elem = document.createElement("div");
-    elem.setAttribute("id", "e"+numElems);
-    elem.setAttribute("class", "myButton");
-
-    let textHolder = document.createElement("div");
-    textHolder.setAttribute("class", "buttonText");
-    textHolder.setAttribute("id", "e"+numElems+"t");
-
-    elem.appendChild(textHolder);
-    elem.addEventListener("click", function(){generalButtonPress(this.id)});
-
-    elem.addEventListener("mouseover", function(){this.timer=window.setTimeout(function(){generalButtonPress(elem.id)},2000)});
-    elem.addEventListener("mouseout", function(){if(this.timer){window.clearTimeout(this.timer)}});
-   
-    document.getElementById("elemsGoHere").append(elem);
+.addButtonWrapper {
+  height: 150px;
+  width: 150px;
+  background-color: transparent;
+  margin: .8%;
+  float: left;
+  border-radius: 8%
+}
+.addButton {
+  text-align: center;
+  margin-top: 50px;
+  max-width: 100px;
+  max-height: 100px;
+  background-image: url("plus.png");
+}
+.addButton:hover {
+  filter:brightness(110%);
 }
 
-function toggleSettings() {  
-    let x = document.getElementById("settings");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
+#settings {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: var(--color1);
 }
 
-function toggleAddButton() {  
-    let x = document.getElementById("addButtonWrapper");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
+.bigSettingWrapper {
+  height: 135px;
+  float:left;
+  background-color: var(--color1);
+}
+.bigSettingWrapper:hover {
+  filter: brightness(110%);
 }
 
-//https://github.com/Simonwep/pickr/blob/master/README.md
-const pickr1 = Pickr.create({
-    el: '.color-picker-background',
-    theme: 'classic',
-    useAsButton: 'true',
+.smallSettingWrapper {
+  height: 80px;
+  display: flex;
+  margin: 5px;
+}
 
-    swatches: [
-        'rgba(244, 67, 54, 1)',
-        'rgba(233, 30, 99, 0.95)',
-        'rgba(156, 39, 176, 0.9)',
-        'rgba(103, 58, 183, 0.85)',
-        'rgba(63, 81, 181, 0.8)',
-        'rgba(33, 150, 243, 0.75)',
-        'rgba(3, 169, 244, 0.7)',
-        'rgba(0, 188, 212, 0.7)',
-        'rgba(0, 150, 136, 0.75)',
-        'rgba(76, 175, 80, 0.8)',
-        'rgba(139, 195, 74, 0.85)',
-        'rgba(205, 220, 57, 0.9)',
-        'rgba(255, 235, 59, 0.95)',
-        'rgba(255, 193, 7, 1)'
-    ],
+.deleteWrap{
 
-    components: {
+}
+.textWrap{
 
-        // Main components
-        preview: true,
-        opacity: true,
-        hue: true,
+}
+.backgroundWrap{
 
-        // Input / output Options
-        interaction: {
-            hex: true,
-            rgba: true,
-            hsla: false,
-            hsva: false,
-            cmyk: false,
-            input: true,
-            clear: false,
-            save: true
-        }
-    }
-});
-
-const pickr2 = Pickr.create({
-    el: '.color-picker-text',
-    theme: 'classic',
-    useAsButton: 'true',
-
-    swatches: [
-        'rgba(244, 67, 54, 1)',
-        'rgba(233, 30, 99, 0.95)',
-        'rgba(156, 39, 176, 0.9)',
-        'rgba(103, 58, 183, 0.85)',
-        'rgba(63, 81, 181, 0.8)',
-        'rgba(33, 150, 243, 0.75)',
-        'rgba(3, 169, 244, 0.7)',
-        'rgba(0, 188, 212, 0.7)',
-        'rgba(0, 150, 136, 0.75)',
-        'rgba(76, 175, 80, 0.8)',
-        'rgba(139, 195, 74, 0.85)',
-        'rgba(205, 220, 57, 0.9)',
-        'rgba(255, 235, 59, 0.95)',
-        'rgba(255, 193, 7, 1)'
-    ],
-
-    components: {
-
-        // Main components
-        preview: true,
-        opacity: true,
-        hue: true,
-
-        // Input / output Options
-        interaction: {
-            hex: true,
-            rgba: true,
-            hsla: false,
-            hsva: false,
-            cmyk: false,
-            input: true,
-            clear: false,
-            save: true
-        }
-    }
-});
-
-pickr1.on('save', (color, instance) => {
-    changeBackgroundColor(color.toRGBA());
-    //console.log('save', color, instance);
-})
-
-pickr2.on('save', (color, instance) => {
-    changeTextColor(color.toRGBA());
-    //console.log('save', color, instance);
-})
+}
