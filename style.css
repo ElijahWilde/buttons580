@@ -5,8 +5,7 @@
 }
 
 .myButton {
-  height: 150px;
-  width: 150px;
+  max-width: none !important;
   background-color: var(--color2);
   margin: .8%;
   float: left;
@@ -110,7 +109,7 @@ h5{
 }
 
 .bigSettingWrapper {
-  height: 135px;
+  height: 120px;
   float:left;
   background-color: var(--color1);
 }
