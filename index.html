@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
-
-
+ 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>buttons580</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
-    <script src="https://cdn.scaleflex.it/plugins/filerobot-image-editor/3/filerobot-image-editor.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -18,12 +17,18 @@
         <button class="primaryButton editBtnOff" id="editBtn" onclick="editButtonPress()">Edit Mode</button>
     </div>
 
+    
+    <div>
+        <input type="range" min="50" max="250" value="150"  id="buttSize" onchange="changeButtonSize()">
+    </div>
+
     <div id="elemsGoHere"> </div>
 
     <div id="addButtonWrapper" style="display:none"> 
         <img src="plus.png" alt="No Img" class="addButton" onclick="newElem()"></img>
     </div>
 
+    <div class="container"></div>
     <div id="settings" style="display:none">
         <div class="bigSettingWrapper backgroundWrap">
             <h2>Background</h2>
@@ -32,6 +37,10 @@
                 <input type="button" class="secondaryButton" id="uploadImageButton" value="Upload Image" onclick="document.getElementById('uploadImage').click()" />
                 <input type="file" style="display:none;" id="uploadImage"/> 
                 <button class="secondaryButton" onclick="delBackgroundImg()">Delete Image</button>
+                <div>
+                    <h5>Image Zoom</h5>
+                    <input type='range' step='1' min='50' max='270' value='125' id="picZoom" onchange="zoom()">
+                </div>
             </div>
         </div>
         <div class="bigSettingWrapper textWrap">
