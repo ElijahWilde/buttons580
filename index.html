@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body style="background-color:rgb(251, 252, 255)">
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 
     <div>
@@ -19,7 +19,7 @@
 
     
     <div>
-        <input type="range" min="50" max="250" value="150"  id="buttSize" onchange="changeButtonSize()">
+        <input type="range" min="50" max="250" value="150" style="display:none" id="buttSize" onchange="changeButtonSize()">
     </div>
 
     <div id="elemsGoHere"> </div>
@@ -39,7 +39,7 @@
                 <button class="secondaryButton" onclick="delBackgroundImg()">Delete Image</button>
                 <div>
                     <h5>Image Zoom</h5>
-                    <input type='range' step='1' min='50' max='270' value='125' id="picZoom" onchange="zoom()">
+                    <input type='range' step='1' min='50' max='300' id="picZoom" onchange="zoom()">
                 </div>
             </div>
         </div>
