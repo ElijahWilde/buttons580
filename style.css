@@ -1,7 +1,9 @@
 :root {
-  --color0: rgb(27, 171, 190);
-  --color1: rgb(94, 163, 185);
-  --color2: rgb(213, 180, 235);
+  --color0: #dfe6ef;
+  --color1: rgb(96, 88, 86);
+  --color2: rgb(39, 65, 86);
+  --color3: rgb(28, 110, 140);
+  --color4: rgb(251, 252, 255);
 }
 
 .myButton {
@@ -35,18 +37,60 @@
   background:rgba(1,1,1,0.5);
 }
 
+input[type="range"] {
+  -webkit-appearance: none;
+}
+ 
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: var(--color2);
+  height: 5px;
+}
+ 
+input[type="range"]::-moz-range-track {
+  background: var(--color2);
+  height: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  background: var(--color3);
+  margin-top: -5px;
+  border-radius: 50%;
+ }
+ 
+input[type="range"]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background: var(--color3);
+  margin-top: -5px;
+  border-radius: 50%;
+}
+
 .secondaryButton{
   height: 30px;
   width: 110px;
+  margin-right: 5px;
   margin-left: 5px;
   border: none;
-  border-radius: 4%;
+  background-color: var(--color2);
+  color: var(--color4);
 }
 
 h5{
   margin-top: -5px;
   margin-bottom: 2px;
   margin-left: 2px;
+  color: var(--color2);
+}
+
+h2{
+  color: var(--color2);
 }
 
 .lightUp{
@@ -67,18 +111,19 @@ h5{
 }
 
 #delBtn{
-  background-color: red;
-  color: white;
+  background-color: var(--color3);
+  color: var(--color4);
 }
 
 .editBtnOff {
-  background-color: white ;
-  color: var(--color0);
+  background-color: var(--color4);
+  color: var(--color2);
 }
 
 .editBtnOn {
-  color: white;
-  background-color: var(--color0);
+  color: var(--color4);
+  background-color: var(--color2);
+  border-radius: 7px;
 }
 
 .addButtonWrapper {
@@ -105,13 +150,13 @@ h5{
   bottom: 0;
   width: 100%;
   text-align: center;
-  background-color: var(--color1);
+  background-color: var(--color0);
 }
 
 .bigSettingWrapper {
   height: 120px;
   float:left;
-  background-color: var(--color1);
+  background-color: var(--color0);
 }
 .bigSettingWrapper:hover {
   filter: brightness(110%);
