@@ -5,8 +5,10 @@ let currentButton = "";
 let editMode = false;
 let buttIDForZoomSlider = "";
 let buttSize = '150px';
+let buttOn = document.createElement("AUDIO");
+buttOn.src = "Button Click On.mp3";
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function() {  
     document.getElementById('uploadImage').addEventListener('change', function() {
         if (this.files && this.files[0]) {
             addBackgroundImg(URL.createObjectURL(this.files[0]));
@@ -15,6 +17,7 @@ window.addEventListener('load', function() {
 });
 
 function generalButtonPress(callerID){
+    buttOn.play();
     currentButton = callerID;
     if (editMode){
         toggleSettings();
@@ -39,6 +42,7 @@ function editButtonPress(){
         toggleSettings();
     }
 
+    toggleButtSize()
 }
 
 function toggleLightUp(){
@@ -148,6 +152,15 @@ function newElem() {
     backgroundPattern: 'https://cookieshq.co.uk/images/2016/06/28/background-image.jpg'
     });
 
+}
+
+function toggleButtSize() {
+    let x = document.getElementById("buttSize");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
 }
 
 function toggleSettings() {  
@@ -393,8 +406,8 @@ ImageControl = (function() {
               y: (100 * (mousepos.y - mousedown.y)) / patternBackgroundWidth
             };
             actualMovePercentage = {
-              x: (0.7 / (1 - (zoomLevel / 100))) * movePercentage.x,
-              y: (0.7 / (1 - (zoomLevel / 100))) * movePercentage.y
+              x: (1.1 / (1 - (zoomLevel / 100))) * movePercentage.x, // THIS AFFECTS HOW FAST THE IMAGE MOVES
+              y: (1.1 / (1 - (zoomLevel / 100))) * movePercentage.y
             };
             patternBackground.css({
               'background-position': `${elepos.x + actualMovePercentage.x}% ${elepos.y + actualMovePercentage.y}%`
