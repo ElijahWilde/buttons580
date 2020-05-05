@@ -2,7 +2,7 @@
 
 let numElems = 0;
 let currentButton = "";
-let editMode = True;
+let editMode = 1;
 let buttIDForZoomSlider = "";
 let buttSize = '150px';
 let buttOn = document.createElement("AUDIO");
